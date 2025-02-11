@@ -7,27 +7,23 @@ namespace Radix_cap.data;
 public class DataBase 
 {
     
-    private readonly DbContextOptionsBuilder<ApplicationDbContext> _dbContextOptionsBuilder;
+    private readonly RadixCapDbContext _dbContext;
 
     public DataBase()
     {
-        var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
-        optionsBuilder.UseSqlServer(ApplicationDbContext.SqlServerConnection());
-        _dbContextOptionsBuilder = optionsBuilder;
+        var optionsBuilder = new DbContextOptionsBuilder<RadixCapDbContext>();
+        optionsBuilder.UseSqlServer(RadixCapDbContext.SqlServerConnection());
+        _dbContext = new RadixCapDbContext(optionsBuilder.Options);
     }
     
 
-    public async Task<List<Coin>> GetCoins()
+    public async Task<List<Asset>> GetCoins()
     {
-        await using var context = new ApplicationDbContext(_dbContextOptionsBuilder.Options);
-        var coins = await context.Coins.ToListAsync();
-        return coins;
+        return await _dbContext.Assets.ToListAsync();
     }
 
-    public async Task<Price> GetCurrentPriceForAsset(string coin)
+    public async Task<PricePoint> GetCurrentPriceForAsset(string coinTicker)
     {
-        await using var context = new ApplicationDbContext(_dbContextOptionsBuilder.Options);
-        var prices = await context.Prices.Where((price) => price.asset_name == coin).FirstAsync();
-        return prices;
+        return await _dbContext.Prices.Where((price) => price.AssetId == coinTicker).FirstAsync();
     }
 }

@@ -1,6 +1,10 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Radix_cap.api", "Radix_cap.api\Radix_cap.api.csproj", "{EE684092-176A-4D54-BBEF-A6C16DDF1033}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Radix_cap.api", "Radix_cap.api\Radix_cap.api.csproj", "{817CE209-B0D2-44A2-B43E-954845320C30}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Radix_cap.data", "Radix_cap.data\Radix_cap.data.csproj", "{CC21DE17-D2B4-439F-A4FE-E004D8A60C68}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "radix_cap.services", "radix_cap.services\radix_cap.services.csproj", "{07E258CF-7110-45DF-AD94-8F9C8643538C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -8,9 +12,17 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{EE684092-176A-4D54-BBEF-A6C16DDF1033}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EE684092-176A-4D54-BBEF-A6C16DDF1033}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EE684092-176A-4D54-BBEF-A6C16DDF1033}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EE684092-176A-4D54-BBEF-A6C16DDF1033}.Release|Any CPU.Build.0 = Release|Any CPU
+		{817CE209-B0D2-44A2-B43E-954845320C30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{817CE209-B0D2-44A2-B43E-954845320C30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{817CE209-B0D2-44A2-B43E-954845320C30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{817CE209-B0D2-44A2-B43E-954845320C30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC21DE17-D2B4-439F-A4FE-E004D8A60C68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC21DE17-D2B4-439F-A4FE-E004D8A60C68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC21DE17-D2B4-439F-A4FE-E004D8A60C68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC21DE17-D2B4-439F-A4FE-E004D8A60C68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07E258CF-7110-45DF-AD94-8F9C8643538C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07E258CF-7110-45DF-AD94-8F9C8643538C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07E258CF-7110-45DF-AD94-8F9C8643538C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07E258CF-7110-45DF-AD94-8F9C8643538C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
