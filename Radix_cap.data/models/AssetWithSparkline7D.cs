@@ -1,8 +1,10 @@
 using System.Text.Json.Serialization;
+using Radix_cap.data.models;
 
-namespace radix_cap.services.Models.CoinGeckoModels;
+namespace Radix_cap.api.Models;
 
-public class Asset
+
+public class AssetWithSparkline7D
 {
     [JsonPropertyName("id")]
     public string Id { get; set; }
@@ -85,35 +87,39 @@ public class Asset
     [JsonPropertyName("sparkline_in_7d")]
     public SparklineSevenDays? SparklineIn7d { get; set; }
 
-    public Radix_cap.data.models.Asset IntoDatabaseAsset()
-{ 
-    return new Radix_cap.data.models.Asset
+    
+    public static AssetWithSparkline7D FromAssetsAndPricePoints(Asset asset, PricePoint[] pricePoints)
     {
-        Id = Id,
-        Symbol = Symbol,
-        Name = Name,
-        Image = Image,
-        CurrentPrice = CurrentPrice.HasValue ? Math.Round((decimal)CurrentPrice, 18) : null,
-        MarketCap = MarketCap.HasValue ? Math.Round((decimal)MarketCap, 0) : null,
-        MarketCapRank = MarketCapRank,
-        FullyDilutedValuation = FullyDilutedValuation.HasValue ? Math.Round((decimal)FullyDilutedValuation, 0) : null,
-        TotalVolume = TotalVolume.HasValue ? Math.Round((decimal)TotalVolume, 8) : null,
-        High24H = High24H.HasValue ? Math.Round((decimal)High24H, 18) : null,
-        Low24H = Low24H.HasValue ? Math.Round((decimal)Low24H, 18) : null,
-        PriceChange24H = PriceChange24H.HasValue ? Math.Round((decimal)PriceChange24H, 18) : null,
-        PriceChangePercentage24H = PriceChangePercentage24H.HasValue ? Math.Round((decimal)PriceChangePercentage24H, 8) : null,
-        MarketCapChange24H = MarketCapChange24H.HasValue ? Math.Round((decimal)MarketCapChange24H, 8) : null,
-        MarketCapChangePercentage24H = MarketCapChangePercentage24H.HasValue ? Math.Round((decimal)MarketCapChangePercentage24H, 18) : null,
-        CirculatingSupply = CirculatingSupply.HasValue ? Math.Round((decimal)CirculatingSupply, 0) : null,
-        TotalSupply = TotalSupply.HasValue ? Math.Round((decimal)TotalSupply, 0) : null,
-        MaxSupply = MaxSupply.HasValue ? Math.Round((decimal)MaxSupply, 0) : null,
-        Ath = Ath.HasValue ? Math.Round((decimal)Ath, 18) : null,
-        AthChangePercentage = AthChangePercentage.HasValue ? Math.Round((decimal)AthChangePercentage, 8) : null,
-        AthDate = AthDate,
-        Atl = Atl.HasValue ? Math.Round((decimal)Atl, 18) : null,
-        AtlChangePercentage = AtlChangePercentage.HasValue ? Math.Round((decimal)AtlChangePercentage, 8) : null,
-        AtlDate = AtlDate,
-        LastUpdated = LastUpdated
-    };
-}
+        return new AssetWithSparkline7D
+        {
+            Id = asset.Id,
+            Symbol = asset.Symbol,
+            Name = asset.Name,
+            Image = asset.Image,
+            CurrentPrice = asset.CurrentPrice,
+            MarketCap = asset.MarketCap,
+            MarketCapRank = asset.MarketCapRank,
+            FullyDilutedValuation = asset.FullyDilutedValuation,
+            TotalVolume = asset.TotalVolume,
+            High24H = asset.High24H,
+            Low24H = asset.Low24H,
+            PriceChange24H = asset.PriceChange24H,
+            PriceChangePercentage24H = asset.PriceChangePercentage24H,
+            MarketCapChange24H = asset.MarketCapChange24H,
+            MarketCapChangePercentage24H = asset.MarketCapChangePercentage24H,
+            CirculatingSupply = asset.CirculatingSupply,
+            TotalSupply = asset.TotalSupply,
+            MaxSupply = asset.MaxSupply,
+            Ath = asset.Ath,
+            AthChangePercentage = asset.AthChangePercentage,
+            AthDate = asset.AthDate,
+            Atl = asset.Atl,
+            AtlChangePercentage = asset.AtlChangePercentage,
+            AtlDate = asset.AtlDate,
+            LastUpdated = asset.LastUpdated,
+            SparklineIn7d = SparklineSevenDays.FromPricePoints(pricePoints)
+        };
+    }
+        
+    
 }

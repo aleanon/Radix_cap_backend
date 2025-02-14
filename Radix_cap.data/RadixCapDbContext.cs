@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal;
+using Microsoft.Extensions.Logging;
 using Radix_cap.data.models;
 
 namespace Radix_cap.data;
@@ -15,6 +17,18 @@ public class RadixCapDbContext(DbContextOptions<RadixCapDbContext> options) : Db
     public DbSet<PricePoint> Prices { get; set; }
 
     public DbSet<Roi> Rois { get; set; }
+    
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        optionsBuilder
+            .UseSqlServer(SqlServerConnection())
+            .EnableSensitiveDataLogging()
+            .UseLoggerFactory(LoggerFactory.Create(builder => 
+                builder
+                    .SetMinimumLevel(LogLevel.Warning)
+                ));
+    }
+    
     
     public static string SqlServerConnection()
     {

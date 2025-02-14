@@ -8,7 +8,7 @@ public class Roi
 {
     [Key]
     public string AssetId { get; set; }
-    public double Times { get; set; }
-    public string Currency  { get; set; }
-    public double Percentage { get; set; } 
+    public double? Times { get; set; }
+    public string? Currency  { get; set; }
+    public double? Percentage { get; set; } 
 }

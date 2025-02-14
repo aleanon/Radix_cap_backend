@@ -17,7 +17,6 @@ public class CoinApiRepository(RadixCapDbContext context) : ICoinApiRepository
             if (asset == null) continue;
             asset.CurrentPrice = currentPrice;
             asset.LastUpdated = assetRate.Time;
-            context.Entry(asset).CurrentValues.SetValues(asset);
         }
 
         await context.SaveChangesAsync();

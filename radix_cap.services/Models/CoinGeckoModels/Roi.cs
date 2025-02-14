@@ -5,11 +5,11 @@ namespace radix_cap.services.Models.CoinGeckoModels;
 public class Roi
 {
     [JsonPropertyName("times")]
-    public double Times { get; set; }
+    public double? Times { get; set; }
     [JsonPropertyName("currency")]
-    public string Currency  { get; set; }
+    public string? Currency  { get; set; }
     [JsonPropertyName("percentage")]
-    public double Percentage { get; set; }
+    public double? Percentage { get; set; }
 
     public Radix_cap.data.models.Roi IntoDatabaseRoi(string assetId)
     {
