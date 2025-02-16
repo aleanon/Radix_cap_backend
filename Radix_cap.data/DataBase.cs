@@ -25,9 +25,8 @@ public class DataBase
 
     public async Task<List<AssetWithSparkline7D>> GetAssetsWithSparklineRankRange(int startRank, int endRank)
     {
-        var sevenDaysAgo = DateTime.Now.AddDays(-7).AddTicks(-1);
         var assets = _dbContext.Assets;
-        var prices = _dbContext.Prices;
+        var prices = _dbContext.Sparklines;
         Console.WriteLine($"StartRank: {startRank}, EndRank: {endRank}");
 
         var query = assets
@@ -35,13 +34,12 @@ public class DataBase
             .Select(asset => new {
                 Asset = asset,
                 Prices = prices
-                    .Where(p => p.AssetId == asset.Symbol && p.TimeStamp > sevenDaysAgo)
-                    .ToArray()
+                    .FirstOrDefault(p => p.AssetId == asset.Id)
             })
             .ToList();  
 
         return query
-            .Select(result => AssetWithSparkline7D.FromAssetsAndPricePoints(
+            .Select(result => AssetWithSparkline7D.FromAssetsAndSparkline(
                 result.Asset, 
                 result.Prices
             ))

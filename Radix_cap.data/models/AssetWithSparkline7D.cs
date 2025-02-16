@@ -120,6 +120,39 @@ public class AssetWithSparkline7D
             SparklineIn7d = SparklineSevenDays.FromPricePoints(pricePoints)
         };
     }
+    
+    public static AssetWithSparkline7D FromAssetsAndSparkline(Asset asset, Sparkline? sparkline)
+    {
+        return new AssetWithSparkline7D
+        {
+            Id = asset.Id,
+            Symbol = asset.Symbol,
+            Name = asset.Name,
+            Image = asset.Image,
+            CurrentPrice = asset.CurrentPrice,
+            MarketCap = asset.MarketCap,
+            MarketCapRank = asset.MarketCapRank,
+            FullyDilutedValuation = asset.FullyDilutedValuation,
+            TotalVolume = asset.TotalVolume,
+            High24H = asset.High24H,
+            Low24H = asset.Low24H,
+            PriceChange24H = asset.PriceChange24H,
+            PriceChangePercentage24H = asset.PriceChangePercentage24H,
+            MarketCapChange24H = asset.MarketCapChange24H,
+            MarketCapChangePercentage24H = asset.MarketCapChangePercentage24H,
+            CirculatingSupply = asset.CirculatingSupply,
+            TotalSupply = asset.TotalSupply,
+            MaxSupply = asset.MaxSupply,
+            Ath = asset.Ath,
+            AthChangePercentage = asset.AthChangePercentage,
+            AthDate = asset.AthDate,
+            Atl = asset.Atl,
+            AtlChangePercentage = asset.AtlChangePercentage,
+            AtlDate = asset.AtlDate,
+            LastUpdated = asset.LastUpdated,
+            SparklineIn7d = SparklineSevenDays.FromDbSparkline(sparkline)
+        };
+    }
         
     
 }

@@ -1,3 +1,4 @@
+using System.Globalization;
 using System.IO.Compression;
 using System.Text.Json;
 using System.Threading.RateLimiting;
@@ -7,15 +8,19 @@ using Radix_cap.data;
 using radix_cap.services.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+var defaultCulture = new CultureInfo("en-US");
+CultureInfo.DefaultThreadCurrentCulture = defaultCulture;
+CultureInfo.DefaultThreadCurrentUICulture = defaultCulture;
+
 
 builder.Services.AddDbContext<RadixCapDbContext>();
 // options => options.UseSqlServer(RadixCapDbContext.SqlServerConnection()));
 
 builder.Services.AddScoped<DataBase>();
-// builder.Services.AddHttpClient<ICoinGeckoService, CoinGeckoService>();
-// builder.Services.AddScoped<ICoinGeckoService, CoinGeckoService>();
-// builder.Services.AddScoped<ICoinGeckoRepository, CoinGeckoRepository>();
-// builder.Services.AddHostedService<CoinGeckoBackgroundService>();
+builder.Services.AddHttpClient<ICoinGeckoService, CoinGeckoService>();
+builder.Services.AddScoped<ICoinGeckoService, CoinGeckoService>();
+builder.Services.AddScoped<ICoinGeckoRepository, CoinGeckoRepository>();
+builder.Services.AddHostedService<CoinGeckoBackgroundService>();
 
 // builder.Services.AddHttpClient<ICoinApiService, CoinApiService>();
 // builder.Services.AddTransient<ICoinApiService, CoinApiService>();

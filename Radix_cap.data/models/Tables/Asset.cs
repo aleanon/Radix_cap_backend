@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Radix_cap.data.models;
 
 [Table("assets")]
-[PrimaryKey(nameof(Id), nameof(Symbol) )]
+[PrimaryKey(nameof(Id), nameof(Symbol))]
 public class Asset
 {
     [MaxLength(100)]
@@ -21,42 +21,59 @@ public class Asset
     [MaxLength(500)]
     public string? Image { get; set; }
 
+    [Precision(38, 18)]
     public decimal? CurrentPrice { get; set; }
 
+    [Precision(38, 0)]
     public decimal? MarketCap { get; set; }
 
     public int? MarketCapRank { get; set; }
 
+    [Precision(38, 0)]
     public decimal? FullyDilutedValuation { get; set; }
 
+    [Precision(38, 8)]
     public decimal? TotalVolume { get; set; }
 
+    [Precision(38, 18)]
     public decimal? High24H { get; set; }
 
+    [Precision(38, 18)]
     public decimal? Low24H { get; set; }
 
+    [Precision(38, 18)]
     public decimal? PriceChange24H { get; set; }
 
+    [Precision(38, 8)]
     public decimal? PriceChangePercentage24H { get; set; }
 
+    [Precision(38, 8)]
     public decimal? MarketCapChange24H { get; set; }
 
+    [Precision(38, 18)]
     public decimal? MarketCapChangePercentage24H { get; set; }
 
+    [Precision(38, 0)]
     public decimal? CirculatingSupply { get; set; }
 
+    [Precision(38, 0)]
     public decimal? TotalSupply { get; set; }
 
+    [Precision(38, 0)]
     public decimal? MaxSupply { get; set; }
 
+    [Precision(38, 18)]
     public decimal? Ath { get; set; }
 
+    [Precision(38, 8)]
     public decimal? AthChangePercentage { get; set; }
 
     public DateTime? AthDate { get; set; }
 
+    [Precision(38, 18)]
     public decimal? Atl { get; set; }
 
+    [Precision(38, 8)]
     public decimal? AtlChangePercentage { get; set; }
 
     public DateTime? AtlDate { get; set; }

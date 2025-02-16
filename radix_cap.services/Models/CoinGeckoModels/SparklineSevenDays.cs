@@ -1,3 +1,4 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Radix_cap.data.models;
 
@@ -22,5 +23,14 @@ public class SparklineSevenDays
             };
         }).ToArray();
         return result;
+    }
+
+    public Sparkline IntoSparkline(string assetId)
+    {
+        return new Sparkline
+        {
+            AssetId = assetId,
+            Prices = JsonSerializer.Serialize(Price),
+        };
     }
 }
